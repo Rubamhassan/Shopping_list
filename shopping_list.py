@@ -40,22 +40,55 @@ def replace_item(old_item, new_item):
     else:
         print "%s is not in the list." % (old_item)
 
+def menu():
+    print "1 to add to the list"
+    print "2 to sort the list"
+    print "3 to replace and item"
+    print "4 to remove and item"
+    options=int(raw_input("choose a number:  "))
+    return options
 
-# TEST FUNCTIONS
-# 1 - add 4 times to your shopping list
-add_shopping_list("apple")
-add_shopping_list("steak")
-add_shopping_list("beef")
-add_shopping_list("mustard")
 
-# 2 - Add an item that is already in the list. what happens?
-add_shopping_list("apple")
+def main():
+    option = menu()
+    while True:
+        if option > 0 and option < 5:
+            if option == 1:
+                item = raw_input("what would you like to add?   ")
+                add_shopping_list(item)
+            elif option == 2:
+                print sorted_shopping_list()
+            elif option == 3:
+                old_item = raw_input("what would you like to take out?  ")
+                new_item = raw_input("what would you like to add in?  ")
+                replace_item(old_item, new_item)
+            else:
+                item = raw_input("what would you like to take out?  ")
+                remove_item(item)
 
-# 3 - Remove an item on your list
-remove_item("apple")
+            option = menu()
+        else:
+            print "your list is done"
+            break 
 
-# 4 - Remove an item that is not in the list. what happens?
-remove_item("chicken")
+if __name__=="__main__":
+    main()
+    
+# # TEST FUNCTIONS
+# # 1 - add 4 times to your shopping list
+# add_shopping_list("apple")
+# add_shopping_list("steak")
+# add_shopping_list("beef")
+# add_shopping_list("mustard")
 
-# 5 - you've changed your mind on one of your items. you want to substitute it with something else.
-replace_item("mustard", "ketchup")
+# # 2 - Add an item that is already in the list. what happens?
+# add_shopping_list("apple")
+
+# # 3 - Remove an item on your list
+# remove_item("apple")
+
+# # 4 - Remove an item that is not in the list. what happens?
+# remove_item("chicken")
+
+# # 5 - you've changed your mind on one of your items. you want to substitute it with something else.
+# replace_item("mustard", "ketchup")
